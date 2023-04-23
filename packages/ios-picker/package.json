@@ -2,15 +2,15 @@
   "name": "ios-picker",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/core/index.js",
+  "types": "./dist/core/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.umd.js"
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.mjs",
+      "require": "./dist/core/index.umd.js"
     },
-    "./dist/style.css": "./dist/style.css",
+    "./dist/style.css": "./dist/core/style.css",
     "./package.json": "./package.json"
   },
   "scripts": {
