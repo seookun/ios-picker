@@ -1,0 +1,57 @@
+{
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks",
+    "lint": "eslint --fix --cache .",
+    "format": "prettier **/*.@(css|scss|json|md) --write --cache --no-error-on-unmatched-pattern .",
+    "build": "pnpm --filter ios-picker build"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-define-config": "^1.17.0",
+    "eslint-import-resolver-typescript": "^3.5.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.11",
+    "ios-picker": "workspace:*",
+    "lint-staged": "^13.2.0",
+    "postcss": "^8.4.21",
+    "postcss-scss": "^4.0.6",
+    "prettier": "^2.8.7",
+    "react": "^18.2.0",
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "^5.0.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --concurrent false",
+    "commit-msg": "pnpm exec commitlint --edit $1"
+  },
+  "lint-staged": {
+    "packages/**/*.@(ts|tsx)": [
+      "eslint --cache --fix"
+    ],
+    "*.@(css|scss|json|md|mdx)": [
+      "prettier --write --cache --ignore-unknown"
+    ]
+  },
+  "packageManager": "pnpm@8.1.1",
+  "pnpm": {
+    "overrides": {
+      "ios-picker": "workspace:*"
+    }
+  }
+}
